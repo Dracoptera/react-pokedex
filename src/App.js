@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { PokeList } from "./components/PokeList/PokeList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      pokemons: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://raw.githubusercontent.com/brunomoreirazup/kanto-pokedex-json/master/pokedex.json"
+    )
+      .then(response => response.json())
+      .then(pokedex =>
+        this.setState({
+          pokemons: pokedex.pokemons
+        })
+      );
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1> React Pokédex </h1>
+        {console.log(this.state.pokemons)}
+        <PokeList pokemons={this.state.pokemons} />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,23 @@
+.PokeCard {
+    background-color: #38598b;
+    color: #e7eaf6;
+    width: 300px;
+    margin: 0 0 1rem 1rem;
+
+}
+
+.PokeCard h2 {
+    font-size: 2rem;
+    background-color: #e7eaf6;
+    color: #113f67;
+    width: 200px;
+}
+
+.PokeCard img {
+    width: 100%;
+    transition: all .2s ease-in-out;
+}
+
+.PokeCard img:hover {
+    transform: scale(1.1);
+}
